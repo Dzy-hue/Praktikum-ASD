@@ -11,8 +11,11 @@ public class MahasiswaDemo08 {
             System.out.println("\nMenu:");
             System.out.println("1. Mengumpulkan Tugas");
             System.out.println("2. Menilai Tugas");
-            System.out.println("3. Melihat Tugas Teratas");
-            System.out.println("4. Melihat Daftar Tugas");
+            System.out.println("3. Melihat Tugas Teratas(Terakhir)");
+            System.out.println("4. Melihat Tugas Terbawah(Pertama)");
+            System.out.println("5. Menghitung Jumlah Tugas");
+            System.out.println("6. Melihat Daftar Tugas");
+            System.out.println("7. Keluar");    
             System.out.print("Pilih opsi: ");
             pilih = sc.nextInt();
             sc.nextLine();
@@ -41,20 +44,32 @@ public class MahasiswaDemo08 {
                     }
                     break;
                 case 3:
-                    Mahasiswa08 lihatTeratas = stack.peek();
+                    Mahasiswa08 lihatTeratas = stack.peekTeratas();
                     if (lihatTeratas != null) {
                         System.out.println("Tugas terakhir dikumpulkan oleh " + lihatTeratas.nama);
                     }
                     break;
                 case 4:
+                    Mahasiswa08 lihatBawah = stack.peekBawah();
+                    if (lihatBawah != null) {
+                        System.out.println("Tugas terbawah dikumpulkan oleh " + lihatBawah.nama);
+                    }
+                    break;
+                case 5:
+                    stack.hitungTugas();
+                    break;
+                case 6:
                     System.out.println("Daftar semua Tugas");
                     System.out.println("Nama\tNIM\tKelas");
                     stack.print();
                     break;
+                case 7:
+                    System.out.println("Terima kasih telah menggunakan program.");
+                    break;
                 default:
                     System.out.println("Pilihan tidak valid.");
             }
-        } while (pilih >= 1 && pilih <= 4);
+        } while (pilih != 7);
         sc.close();
     }
 }
